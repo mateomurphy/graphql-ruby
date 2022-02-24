@@ -279,6 +279,10 @@ module GraphQL
         @method_conflict_warning = method_conflict_warning
         @legacy_edge_class = legacy_edge_class
 
+        if arguments.nil?
+          raise ArgumentError, "No arguments for field #{name}"
+        end
+        
         arguments.each do |name, arg|
           case arg
           when Hash
